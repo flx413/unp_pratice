@@ -16,7 +16,7 @@ void Connect(int fd, const struct sockaddr *sa, socklen_t salen)
 {
     if(connect(fd, sa, salen) < 0)
     {
-        printf("connect error\n");
+        printf("connect error, errno = %d\n", errno);
         exit(-1);
     }
 }

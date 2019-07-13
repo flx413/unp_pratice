@@ -35,4 +35,8 @@ void Fputs(const char *ptr, FILE *stream);
 
 char* Fgets(char *ptr, int n, FILE *stream);
 
+void Sendto(int fd, const void* ptr, size_t nbytes, int flags, const struct sockaddr* sa, socklen_t salen);
+
+ssize_t Recvfrom(int fd, void* ptr, size_t nbytes, int flags, struct sockaddr* sa, socklen_t* salenptr);
+
 pid_t Fork();

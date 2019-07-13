@@ -213,6 +213,27 @@ char* Fgets(char *ptr, int n, FILE *stream)
     return rptr;
 }
 
+void Sendto(int fd, const void* ptr, size_t nbytes, int flags, const struct sockaddr* sa, socklen_t salen)
+{
+    if(sendto(fd, ptr, nbytes, flags, sa, salen) != (ssize_t)nbytes)
+    {
+        printf("sendto error\n");
+	exit(-1);
+    }
+}
+
+ssize_t Recvfrom(int fd, void* ptr, size_t nbytes, int flags, struct sockaddr* sa, socklen_t* salenptr)
+{
+    ssize_t n = recvfrom(fd, ptr, nbytes, flags, sa, salenptr);
+    if(n < 0)
+    {
+	printf("recvfrom error\n");
+	exit(-1);
+    }
+
+    return n;
+}
+
 pid_t Fork()
 {
     pid_t pid = fork();
